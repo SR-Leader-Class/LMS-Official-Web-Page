@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <!-- ------------------------------------------------ Mian Page Start (head) ------------------------------------------------ -->
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>L.M.S Games</title>
+    <link rel="icon" type="image/png" href="https://github.com/SR-Leader-Class/Test-Website-Images/raw/main/LMS%20Logo%205.png">
+    <link rel="apple-touch-icon" href="https://github.com/SR-Leader-Class/Test-Website-Images/raw/main/LMS%20Logo%201%20-%20Fit.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- ------------------------------------------------ Mian Page End (head) ------------------------------------------------ -->
+
+    <!-- ------------------------------------------------ Account Page Start (head) ------------------------------------------------ -->
+    <title>Firebase 驗證測試</title>
+
+    <!-- Firebase compat SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+    <base target="_top">
+    <!-- ------------------------------------------------ Account Page End (head) ------------------------------------------------ -->
+</head>
+
+<body class="bg-[#121212] text-white overflow-x-hidden">
+    <!-- ------------------------------------------------ Mian Page Start (html) ------------------------------------------------ -->
+    <nav class="flex items-center justify-between px-8 py-5 bg-[#000000] shadow-lg fixed top-0 left-0 right-0 z-50">
+        <div class="flex flex-col lg:flex-row justify-between w-full">
+            <div class="flex items-center space-x-4 lg:space-x-8 mb-4 lg:mb-0">
+                <div id="homeReload" class="flex items-center cursor-pointer">
+                    <img src="https://github.com/SR-Leader-Class/Test-Website-Images/raw/main/LMS%20Logo%205.png" alt="L.M.S Games 標誌" class="h-10 w-10 lg:h-12 lg:w-12 mr-2">
+                    <span class="text-xl lg:text-2xl font-bold text-gray-100">L.M.S GAMES</span>
+                </div>
+                <div class="hidden lg:flex space-x-6 text-gray-400 font-medium">
+                    <div class="relative group">
+                        <button type="button" class="hover:text-white transition-colors duration-200" data-dropdown-toggle="overview" aria-controls="overview" aria-expanded="false">總覽</button>
+                        <div id="overview" class="dropdown-menu absolute bg-[#1e1e1e] rounded-lg shadow-xl p-3 mt-4 w-48">
+                            <a data-scroll-target="top-page" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200 hover:pointer" style="cursor: pointer;">Main</a>
+                            <a data-scroll-target="iDC-Colin-Game-Preview" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200 hover:pointer" style="cursor: pointer;">iDC-Colin</a>
+                            <a data-scroll-target="Commodore-1920-Preview" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200 hover:pointer" style="cursor: pointer;">Commodore 1920</a>
+                            <a data-scroll-target="Rainy-Night-Game-Preview" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200 hover:pointer" style="cursor: pointer;">Rainy Night</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200">項目 3</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <button type="button" class="hover:text-white transition-colors duration-200" data-dropdown-toggle="uses" aria-controls="uses" aria-expanded="false">用途</button>
+                        <div id="uses" class="dropdown-menu absolute bg-[#1e1e1e] rounded-lg shadow-xl p-3 mt-4 w-48">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200">使用情境 1</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200">使用情境 2</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200">使用情境 3</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <button type="button" class="hover:text-white transition-colors duration-200" data-dropdown-toggle="news" aria-controls="news" aria-expanded="false">最新消息</button>
+                        <div id="news" class="dropdown-menu absolute bg-[#1e1e1e] rounded-lg shadow-xl p-3 mt-4 w-48">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200">最新新聞</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200">更新內容</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200">部落格</a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <button type="button" class="hover:text-white transition-colors duration-200" data-dropdown-toggle="more" aria-controls="more" aria-expanded="false">更多</button>
+                        <div id="more" class="dropdown-menu absolute bg-[#1e1e1e] rounded-lg shadow-xl p-3 mt-4 w-48">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200">關於我們</a>
+                            <a href="mailto:walschaertsgamestudio@gmail.com" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200">聯絡我們</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#2a2a2a] hover:text-white rounded-md transition-colors duration-200">支援</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 行動版選單按鈕 -->
+            <button id="mobileMenuButton" class="lg:hidden text-gray-400 hover:text-white mobile-menu-button" aria-label="開啟行動版選單" aria-expanded="false" aria-controls="mobileMenu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <div class="hidden lg:flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text"
+                           placeholder="搜尋"
+                           class="bg-[#1e1e1e] text-sm rounded-full pl-10 pr-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1e90ff]">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-500 text-sm"></i>
+                </div>
+                <button id="googleTranslateToggle" type="button" class="text-gray-400 hover:text-white transition-colors duration-200" aria-pressed="false" title="使用 Google 翻譯">
+                    <i class="fas fa-globe text-lg"></i>
+                </button>
+                <button data-scroll-target="auth-section" class="px-5 py-2 rounded-full bg-[#1e1e1e] text-gray-300 text-sm font-medium hover:bg-[#2a2a2a] transition-colors duration-200 btn-primary" hidden>登入</button>
+                <button class="px-6 py-2 rounded-full bg-[#1e90ff] text-sm font-semibold btn-primary">下載</button>
+            </div>
+        </div>
+
+        <!-- 行動版選單 -->
+        <div id="mobileMenu" class="hidden lg:hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+            <div id="mobileMenuPanel" class="bg-[#1a1a1a] w-64 h-full p-6 ml-auto">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-xl font-bold">選單</span>
+                    <!-- <button class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times text-xl"></i>
+                    </button> -->
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <a data-scroll-target="top-page" class="flex items-center gap-2 text-gray-300 hover:text-white" style="cursor: pointer;"><i class="fas fa-gamepad"></i>Main</a>
+                    <a data-scroll-target="iDC-Colin-Game-Preview" class="flex items-center gap-2 text-gray-300 hover:text-white" style="cursor: pointer;"><i class="fas fa-gamepad"></i>iDC-Colin</a>
+                    <a data-scroll-target="Commodore-1920-Preview" class="flex items-center gap-2 text-gray-300 hover:text-white" style="cursor: pointer;"><i class="fas fa-gamepad"></i>Commodore 1920</a>
+                    <a data-scroll-target="Rainy-Night-Game-Preview" class="flex items-center gap-2 text-gray-300 hover:text-white" style="cursor: pointer;"><i class="fas fa-cloud-rain"></i>Rainy Night</a>
+                    <a href="#" class="flex items-center gap-2 text-gray-300 hover:text-white"><i class="fas fa-tools"></i>用途</a>
+                    <a href="#" class="flex items-center gap-2 text-gray-300 hover:text-white"><i class="fas fa-bullhorn"></i>最新消息</a>
+                    <a href="#" class="flex items-center gap-2 text-gray-300 hover:text-white"><i class="fas fa-ellipsis-h"></i>更多</a>
+                    <div class="pt-4">
+                        <button data-scroll-target="auth-section" class="w-full mb-2 px-5 py-2 rounded-full bg-[#1e1e1e] text-gray-300 text-sm font-medium hover:bg-[#2a2a2a] transition-colors duration-200" hidden>登入</button>
+                        <button class="w-full px-6 py-2 rounded-full bg-[#1e90ff] text-sm font-semibold btn-primary">下載</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 
+    <section class="flex flex-col-reverse lg:flex-row items-center justify-between px-8 lg:px-24 py-16 hero-section mt-24">
+        <div class="max-w-xl text-center lg:text-left mt-12 lg:mt-0">
+            <h1 class="text-4xl lg:text-5xl font-extrabold leading-snug mb-4">
+                歡迎來到 <span class="text-gradient">L.M.S Games</span>
+            </h1>
+            <h2 class="text-xl lg:text-2xl font-medium text-gray-300 mb-6">讓想像力與創新相遇。</h2>
+            <p class="text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0">
+                在 L.M.S Games，我們不只是製作遊戲；我們打造沉浸式故事、刺激挑戰與難忘體驗。源自對遊戲設計、敘事與前沿科技的熱情，我們致力於推動互動娛樂的邊界。
+            </p>
+            <div class="flex flex-wrap justify-center lg:justify-start space-x-4 mt-4 mb-4">
+                <button class="bg-[#1e90ff] text-white px-8 py-3 rounded-full font-semibold btn-primary">
+                    取得 LMS Games
+                </button>
+                <button class="border border-gray-600 text-gray-300 px-8 py-3 rounded-full font-semibold btn-primary">
+                    官方文件
+                </button>
+            </div>
+        </div>
+        <div class="lg:w-1/2 flex justify-center lg:justify-end">
+            <img src="https://github.com/SR-Leader-Class/Test-Website-Images/raw/main/Colin%20Gate.png"
+                 alt="遊戲角色進入鮮明場景"
+                 class="rounded-2xl shadow-2xl transition-transform duration-500 hover:scale-105"
+                 style="max-width: 90%;">
+        </div>
+    </section>
+    -->
+
+    <!-- ------------------------------------------------ Unreal Engine Showcase Start (html) ------------------------------------------------ -->
+    <section id="top-page" class="unreal-showcase hero-gradient min-h-[600px] flex items-center px-6 lg:px-20 py-12">
+        <div class="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto w-full">
+            <div class="space-y-6">
+                <div class="flex items-center space-x-2">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                    <span class="font-bold tracking-widest uppercase text-sm">L.M.S Games</span>
+                </div>
+                <h2 class="text-5xl lg:text-6xl font-bold leading-tight">
+                    讓想像力與創新相遇<br>
+                    而你將讓它變得虛幻
+                </h2>
+                <p class="text-gray-400 text-lg max-w-lg">
+                    在 L.M.S Games，我們不只是製作遊戲；我們打造沉浸式故事、刺激挑戰與難忘體驗。源自對遊戲設計、敘事與前沿科技的熱情，我們致力於推動互動娛樂的邊界。
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <button class="bg-blue-500 hover:bg-blue-600 px-8 py-3 rounded-lg font-bold text-lg transition">取得 LMS Games</button>
+                    <button class="bg-transparent border border-gray-600 hover:bg-white/10 px-8 py-3 rounded-lg font-bold text-lg transition">官方文件</button>
+                </div>
+            </div>
+            <div class="relative group">
+                <div class="overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+                    <img src="https://github.com/SR-Leader-Class/Test-Website-Images/raw/main/NP_1.jpg" alt="" class="w-full h-[400px] object-cover group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <p class="text-sm font-semibold">Greeting</p>
+                        <p class="text-xs text-gray-400">Nightmare Park | Produced by L.M.S</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="unreal-showcase px-6 lg:px-20 py-20 max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-10">
+            <h2 class="text-3xl font-bold">虛幻引擎新聞</h2>
+            <button class="border border-gray-600 px-6 py-2 rounded text-sm hover:bg-white/10 transition">查看所有</button>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <article class="bg-[#1a1a1a] p-6 rounded-2xl flex flex-col sm:flex-row gap-6 card-hover cursor-pointer border border-white/5">
+                <div class="sm:w-1/2 aspect-video bg-black rounded-xl overflow-hidden shrink-0">
+                    <div class="w-full h-full flex items-center justify-center bg-zinc-900 border border-zinc-800">
+                        <span class="text-2xl font-black text-white/20">UNREAL FEST 26</span>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">2026年1月20日</p>
+                        <h3 class="text-xl font-bold leading-snug">2026年Unreal Fest芝加哥站</h3>
+                        <p class="text-gray-400 text-sm line-clamp-2">Unreal Fest 芝加哥站的門票現已開賣！誠邀各位開發者於 6 月 16 日至 18 日齊聚風城芝加哥...</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-[10px] bg-zinc-800 px-3 py-1 rounded-full text-gray-400 font-bold">新聞</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="bg-[#1a1a1a] p-6 rounded-2xl flex flex-col sm:flex-row gap-6 card-hover cursor-pointer border border-white/5">
+                <div class="sm:w-1/2 aspect-video bg-gradient-to-br from-purple-900 to-indigo-900 rounded-xl overflow-hidden shrink-0 flex items-center justify-center relative">
+                    <img src="https://github.com/SR-Leader-Class/Test-Website-Images/raw/main/Kasky%20Research%20Institute.png" alt="學習內容" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">2025年11月12日</p>
+                        <h3 class="text-xl font-bold leading-snug">卡斯基研究所</h3>
+                        <p class="text-gray-400 text-sm line-clamp-2">這個最新發布的版本支援即時建構和渲染極具逼真的世界，並在其中填充豐富而精美的細節...</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-[10px] bg-zinc-800 px-3 py-1 rounded-full text-gray-400 font-bold">新聞</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="bg-[#1a1a1a] p-6 rounded-2xl flex flex-col sm:flex-row gap-6 card-hover cursor-pointer border border-white/5">
+                <div class="sm:w-1/2 aspect-video rounded-xl overflow-hidden shrink-0 bg-zinc-800">
+                    <img src="https://github.com/SR-Leader-Class/Test-Website-Images/raw/main/IDC_1.gif" alt="學習內容" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">2026年4月30日</p>
+                        <h3 class="text-xl font-bold leading-snug">四月Epic學習內容精選：PCG、MetaHuman...</h3>
+                        <p class="text-gray-400 text-sm line-clamp-2">本月的免費 Epic 學習內容已上線，透過行動端效能、程式化內容生成、Epic 線上服務...</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-[10px] bg-zinc-800 px-3 py-1 rounded-full text-gray-400 font-bold">學習</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="bg-[#1a1a1a] p-6 rounded-2xl flex flex-col sm:flex-row gap-6 card-hover cursor-pointer border border-white/5">
+                <div class="sm:w-1/2 aspect-video rounded-xl overflow-hidden shrink-0 bg-zinc-800">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=500" alt="遊戲開發" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">2026年4月27日</p>
+                        <h3 class="text-xl font-bold leading-snug">用 UE5 為 PC、PS5 和行動端打造《異環》</h3>
+                        <p class="text-gray-400 text-sm line-clamp-2">探索幻塔工作室如何利用虛幻引擎詮釋風格化、超現實主義現代城市美學，為《異環》打造栩栩如生...</p>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-[10px] bg-zinc-800 px-3 py-1 rounded-full text-gray-400 font-bold">訪談</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- ------------------------------------------------ Unreal Engine Showcase End (html) ------------------------------------------------ -->
+    
+    <!-- ------------------------------------------------ Mian Page End (html) ------------------------------------------------ -->
+
+    <!-- ------------------------------------------------ iDC-Colin Game Preview Start (html) ------------------------------------------------ -->
+    <section id="iDC-Colin-Game-Preview" class="flex justify-center px-8 lg:px-24 py-16 game-preview-section">
+        <div class="flex flex-col md:flex-row product-section p-12 space-y-10 md:space-y-0 md:space-x-12 max-w-6xl w-full">
+            <!-- /*************  ✨ Windsurf Command 🌟  *************/ -->
+            <div class="flex-1">
+                <div class="bg-[#0e0e0e] rounded-xl overflow-hidden shadow-inner game-preview-media">
+                    <!-- <img
+                        src="https://placehold.co/800x450"
+                        alt="遊戲宣傳圖片"
+                        class="w-full"
+                    /> -->
+                    <iframe
+                        width="100%"
+                        style="aspect-ratio: 16/9;"
+                        src="https://www.youtube.com/embed/mh1K3TmMDt4"
+                        title="iDC-Colin 遊戲預覽"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        class="w-full"
+                    ></iframe>
+                </div>
+                <div class="flex flex-wrap justify-center gap-2 mt-3 md:gap-4 game-preview-thumbs">
+                <img
+                    src="https://github.com/SR-Leader-Class/Test-Website-Images/raw/main/Colin%20Gate.png"
+                    alt="小型預覽 1"
+                    data-src="https://placehold.co/1200x700"
+                    data-image-preview
+                    class="w-24 h-14 md:w-32 md:h-20 rounded-lg hover:border-2 hover:border-[#1e90ff] transition-all duration-200"
+                />
+                <img
+                    src="https://placehold.co/120x70"
+                    alt="小型預覽 2"
+                    data-src="https://placehold.co/1200x700"
+                    data-image-preview
+                    class="w-24 h-14 md:w-32 md:h-20 rounded-lg hover:border-2 hover:border-[#1e90ff] transition-all duration-200"
+                />
+                <img
+                    src="https://placehold.co/120x70"
+                    alt="小型預覽 3"
+                    data-src="https://placehold.co/1200x700"
+                    data-image-preview
+                    class="w-24 h-14 md:w-32 md:h-20 rounded-lg hover:border-2 hover:border-[#1e90ff] transition-all duration-200"
+                />
+                <img
+                    src="https://placehold.co/120x70"
+                    alt="小型預覽 4"
+                    data-src="https://placehold.co/1200x700"
+                    data-image-preview
+                    class="w-24 h-14 md:w-32 md:h-20 rounded-lg hover:border-2 hover:border-[#1e90ff] transition-all duration-200"
+                />
+            </div>
+            </div>
+            <!-- /*******  3a0d1b15-5a06-4835-8a94-787e9a6b8e55  *******/  -->   
+            <div class="w-full md:w-[380px]">
+                <h1 class="text-3xl font-bold mb-2">
+                    iDC-Colin
+                </h1>
+                <p class="text-gray-400 text-sm mb-2">L.M.S Games</p>
+                <div class="flex items-center space-x-2 mb-4">
+                </div>
+                <p class="text-4xl font-extrabold mb-4">即將推出</p>
+                <p class="text-xs text-gray-500 mb-4">
+                    最新價格與稅金／增值稅會在結帳時計算
+                </p>
+                <a
+                    href='https://lmsgames.itch.io/nainy-night'
+                    class="w-full bg-[#1e90ff] text-white py-3 rounded-full font-semibold mb-4 btn-primary inline-block text-center"
+                >
+                    即將推出
+                </a>
+                <p class="text-sm text-gray-500 mb-2">安全結帳：</p>
+                <div class="flex space-x-2 mb-6">
+                    <img src="https://placehold.co/40x25" alt="Visa" class="rounded-sm">
+                    <img src="https://placehold.co/40x25" alt="MasterCard" class="rounded-sm">
+                    <img src="https://placehold.co/40x25" alt="PayPal" class="rounded-sm">
+                    <img src="https://placehold.co/40x25" alt="Amex" class="rounded-sm">
+                </div>
+                <div class="text-sm space-y-2 text-gray-500">
+                    <p>
+                        <span class="font-semibold text-gray-300">授權協議：</span> 非標準 EULA
+                    </p>
+                    <p><span class="font-semibold text-gray-300">檔案大小：</span> 5.7 MB</p>
+                    <p><span class="font-semibold text-gray-300">最新版本：</span> 3.3.1.13</p>
+                    <p>
+                        <span class="font-semibold text-gray-300">最新發行日期：</span> 即將推出
+                    </p>
+                    <p>
+                        <span class="font-semibold text-gray-300">初始版本：</span> Alpha 0.0.3
+                    </p>
+                    <p><a href="#" class="text-[#1e90ff] hover:underline">造訪網站</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ------------------------------------------------- iDC-Colin Game Preview End (html) ------------------------------------------------ -->
+
+    <!-- ------------------------------------------------ Commodore 1920 Preview Start (html) ------------------------------------------------ -->
+    <section id="Commodore-1920-Preview" class="flex justify-center px-8 lg:px-24 py-16 game-preview-section">
+        <div class="flex flex-col md:flex-row product-section p-12 space-y-10 md:space-y-0 md:space-x-12 max-w-6xl w-full">
+            <!-- /*************  ✨ Windsurf Command 🌟  *************/ -->
+            <div class="flex-1">
+                <div class="bg-[#0e0e0e] rounded-xl overflow-hidden shadow-inner game-preview-media">
+                    <!-- <img
+                        src="https://placehold.co/800x450"
+                        alt="遊戲宣傳圖片"
+                        class="w-full"
+                    /> -->
+                    <iframe
+                        width="100%"
+                        style="aspect-ratio: 16/9;"
+                        src="https://www.youtube.com/embed/vO7ZPB_ff1g"
+                        title="iDC-Colin 遊戲預覽"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        class="w-full"
+                    ></iframe>
+                </div>
+                <div class="flex flex-wrap justify-center gap-2 mt-3 md:gap-4 game-preview-thumbs">
+                <img
+                    src="https://github.com/SR-Leader-Class/Test-Website-Images/raw/main/Colin%20Gate.png"
+                    alt="小型預覽 1"
+                    data-src="https://placehold.co/1200x700"
+                    data-image-preview
+                    class="w-24 h-14 md:w-32 md:h-20 rounded-lg hover:border-2 hover:border-[#1e90ff] transition-all duration-200"
+                />
+                <img
+                    src="https://placehold.co/120x70"
+                    alt="小型預覽 2"
+                    data-src="https://placehold.co/1200x700"
+                    data-image-preview
+                    class="w-24 h-14 md:w-32 md:h-20 rounded-lg hover:border-2 hover:border-[#1e90ff] transition-all duration-200"
+                />
+                <img
+                    src="https://placehold.co/120x70"
+                    alt="小型預覽 3"
+                    data-src="https://placehold.co/1200x700"
+                    data-image-preview
+                    class="w-24 h-14 md:w-32 md:h-20 rounded-lg hover:border-2 hover:border-[#1e90ff] transition-all duration-200"
+                />
+                <img
+                    src="https://placehold.co/120x70"
+                    alt="小型預覽 4"
+                    data-src="https://placehold.co/1200x700"
+                    data-image-preview
+                    class="w-24 h-14 md:w-32 md:h-20 rounded-lg hover:border-2 hover:border-[#1e90ff] transition-all duration-200"
+                />
+            </div>
+            </div>
+            <!-- /*******  3a0d1b15-5a06-4835-8a94-787e9a6b8e55  *******/  -->   
+            <div class="w-full md:w-[380px]">
+                <h1 class="text-3xl font-bold mb-2">
+                    Commodore 1920
+                </h1>
+                <p class="text-gray-400 text-sm mb-2">L.M.S Games</p>
+                <div class="flex items-center space-x-2 mb-4">
+                </div>
+                <p class="text-4xl font-extrabold mb-4">即將推出</p>
+                <p class="text-xs text-gray-500 mb-4">
+                    最新價格與稅金／增值稅會在結帳時計算
+                </p>
+                <a
+                    href='https://lmsgames.itch.io/nainy-night'
+                    class="w-full bg-[#1e90ff] text-white py-3 rounded-full font-semibold mb-4 btn-primary inline-block text-center"
+                >
+                    即將推出
+                </a>
+                <p class="text-sm text-gray-500 mb-2">安全結帳：</p>
+                <div class="flex space-x-2 mb-6">
+                    <img src="https://placehold.co/40x25" alt="Visa" class="rounded-sm">
+                    <img src="https://placehold.co/40x25" alt="MasterCard" class="rounded-sm">
+                    <img src="https://placehold.co/40x25" alt="PayPal" class="rounded-sm">
+                    <img src="https://placehold.co/40x25" alt="Amex" class="rounded-sm">
+                </div>
+                <div class="text-sm space-y-2 text-gray-500">
+                    <p>
+                        <span class="font-semibold text-gray-300">授權協議：</span> 非標準 EULA
+                    </p>
+                    <p><span class="font-semibold text-gray-300">檔案大小：</span> 5.7 MB</p>
+                    <p><span class="font-semibold text-gray-300">最新版本：</span> 3.3.1.13</p>
+                    <p>
+                        <span class="font-semibold text-gray-300">最新發行日期：</span> 即將推出
+                    </p>
+                    <p>
+                        <span class="font-semibold text-gray-300">初始版本：</span> Alpha 0.0.3
+                    </p>
+                    <p><a href="#" class="text-[#1e90ff] hover:underline">造訪網站</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ------------------------------------------------- Commodore 1920 Game Preview End (html) ------------------------------------------------ -->
+    
+    <!-- ------------------------------------------------ Rainy Night Game Preview Start (html) ------------------------------------------------ -->
+    <section id="Rainy-Night-Game-Preview" class="flex justify-center px-8 lg:px-24 py-16 game-preview-section">
+        <div class="flex flex-col md:flex-row product-section p-12 space-y-10 md:space-y-0 md:space-x-12 max-w-6xl w-full">
+            <div class="flex-1">
+                <div class="bg-[#0e0e0e] rounded-xl overflow-hidden shadow-inner game-preview-media">
+                    <!-- <img
+                        src="https://placehold.co/800x450"
+                        alt="遊戲宣傳圖片"
+                        class="w-full"
+                    /> -->
+                    <iframe
+                        width="100%"
+                        style="aspect-ratio: 16/9;"
+                        src="https://www.youtube.com/embed/Cy4hGRGIi4U"
+                        title="Rainy Night 遊戲預覽"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        class="w-full"
+                    ></iframe>
+                </div>
+                <div class="flex flex-wrap justify-center gap-2 mt-3 md:gap-4 game-preview-thumbs">
+                    <img
+                        src="https://github.com/SR-Leader-Class/Test-Website-Images/raw/main/Colin%20Gate.png"
+                        alt="小型預覽 1"
+                        data-src="https://placehold.co/1200x700"
+                        data-image-preview
+                        class="w-24 h-14 md:w-32 md:h-20 rounded-lg hover:border-2 hover:border-[#1e90ff] transition-all duration-200"
+                    />
+                    <img
+                        src="https://placehold.co/120x70"
+                        alt="小型預覽 2"
+                        data-src="https://placehold.co/1200x700"
+                        data-image-preview
+                        class="w-24 h-14 md:w-32 md:h-20 rounded-lg hover:border-2 hover:border-[#1e90ff] transition-all duration-200"
+                    />
+                    <img
+                        src="https://placehold.co/120x70"
+                        alt="小型預覽 3"
+                        data-src="https://placehold.co/1200x700"
+                        data-image-preview
+                        class="w-24 h-14 md:w-32 md:h-20 rounded-lg hover:border-2 hover:border-[#1e90ff] transition-all duration-200"
+                    />
+                    <img
+                        src="https://placehold.co/120x70"
+                        alt="小型預覽 4"
+                        data-src="https://placehold.co/1200x700"
+                        data-image-preview
+                        class="w-24 h-14 md:w-32 md:h-20 rounded-lg hover:border-2 hover:border-[#1e90ff] transition-all duration-200"
+                    />
+                </div>
+            </div>
+            <!-- /*******  3a0d1b15-5a06-4835-8a94-787e9a6b8e55  *******/  -->   
+            <div class="w-full md:w-[380px]">
+                <h1 class="text-3xl font-bold mb-2">
+                    Rainy Night
+                </h1>
+                <p class="text-gray-400 text-sm mb-2">L.M.S Games</p>
+                <div class="flex items-center space-x-2 mb-4">
+                </div>
+                <p class="text-4xl font-extrabold mb-4">免費</p>
+                <p class="text-xs text-gray-500 mb-4">
+                    免費遊玩
+                </p>
+                <a
+                    href='https://lmsgames.itch.io/nainy-night'
+                    class="w-full bg-[#1e90ff] text-white py-3 rounded-full font-semibold mb-4 btn-primary inline-block text-center"
+                >
+                    立即遊玩
+                </a>
+                <p class="text-sm text-gray-500 mb-2">安全結帳：</p>
+                <div class="flex space-x-2 mb-6">
+                    <img src="https://placehold.co/40x25" alt="Visa" class="rounded-sm">
+                    <img src="https://placehold.co/40x25" alt="MasterCard" class="rounded-sm">
+                    <img src="https://placehold.co/40x25" alt="PayPal" class="rounded-sm">
+                    <img src="https://placehold.co/40x25" alt="Amex" class="rounded-sm">
+                </div>
+                <div class="text-sm space-y-2 text-gray-500">
+                    <p>
+                        <span class="font-semibold text-gray-300">授權協議：</span> 非標準 EULA
+                    </p>
+                    <p><span class="font-semibold text-gray-300">檔案大小：</span> 164 MB</p>
+                    <p><span class="font-semibold text-gray-300">最新版本：</span> 1.0.0</p>
+                    <p>
+                        <span class="font-semibold text-gray-300">最新發行日期：</span> 2024 年 7 月 1 日
+                    </p>
+                    <p>
+                        <span class="font-semibold text-gray-300">初始版本：</span> 1.0.0
+                    </p>
+                    <p><a href="https://lmsgames.itch.io" class="text-[#1e90ff] hover:underline">造訪網站</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ------------------------------------------------- Rainy Night Game Preview End (html) ------------------------------------------------ -->
+
+    
+    <div class="w-full bg-[#0e0e0e] mt-16 py-8">
+        <hr class="border-gray-700 mb-6">
+
+        <nav class="flex flex-col items-center justify-center p-8 bg-[#0e0e0e] shadow-xl">
+            <img src="https://github.com/SR-Leader-Class/Test-Website-Images/raw/main/LMS%20Logo%20Animation%202.gif" 
+                 alt="LMS Games 動態標誌" 
+                 class="w-64 md:w-80 lg:w-96 mt-6 transform transition-transform duration-300 hover:scale-105"
+                 style="border-radius: 10px 10px; box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);">
+        </nav>
+        
+        <div class="flex justify-center space-x-6 mb-6">
+            <a href="https://www.youtube.com/channel/UCascIkLVDWpBWoy5pnMYKGg" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                <i class="fab fa-youtube text-2xl"></i>
+            </a>
+            <a href="https://lmsgames.itch.io/" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                <i class="fab fa-itch-io text-2xl"></i>
+            </a>
+            <a href="https://discord.com/" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                <i class="fab fa-discord text-2xl"></i>
+            </a>
+            <a href="https://twitter.com/" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                <i class="fab fa-twitter text-2xl"></i>
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-200">
+                <i class="fab fa-instagram text-2xl"></i>
+            </a>
+        </div>
+        <hr class="border-gray-700 mt-6 mb-6">
+        <div class="text-center text-gray-500 text-sm font-light space-y-2">
+            <!--
+            <div class="flex flex-wrap justify-center space-x-4 md:space-x-8">
+                <a href="#" class="hover:text-white transition-colors duration-200">法律資訊</a>
+                <a href="#" class="hover:text-white transition-colors duration-200">隱私權政策</a>
+                <a href="#" class="hover:text-white transition-colors duration-200">服務條款與 EULA</a>
+                <a href="#" class="hover:text-white transition-colors duration-200">Cookie</a>
+                <a href="#" class="hover:text-white transition-colors duration-200">網站地圖</a>
+                <a href="#" class="hover:text-white transition-colors duration-200">不要出售我的個人資訊</a>
+                <a href="#" class="hover:text-white transition-colors duration-200">Cookie 設定</a>
+            </div>
+            -->
+            <p class="mt-4">版權所有 © 2025 Commodore 64 保留所有權利。</p>
+        </div>
+    </div>
+
+    <audio id="backgroundMusic" src="https://github.com/SR-Leader-Class/Test-Website-Images/raw/main/Nixon.mp3" preload="none" loop></audio>
+    <button id="musicToggle" type="button" aria-pressed="false" title="播放背景音樂">
+        <i id="musicToggleIcon" class="fas fa-volume-mute"></i>
+        <span id="musicToggleText">播放音樂</span>
+    </button>
+
+    <!-- 返回頂部按鈕 -->
+    <button id="backToTop" class="hover:bg-[#1a7fd9] text-white p-4 shadow-lg transition duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button> 
+
+    <script src="script.js"></script>
+
+</body>
+</html>
