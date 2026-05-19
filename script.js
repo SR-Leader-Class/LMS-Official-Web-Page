@@ -69,6 +69,11 @@ const previewGalleryState = {
     container: null
 };
 
+const dynamicFxState = {
+    heroImage: null,
+    navBar: null
+};
+
 function resolvePreviewSrc(image) {
     const dataSrc = image?.dataset?.src?.trim();
     if (dataSrc && !dataSrc.includes('placehold.co')) {
@@ -172,6 +177,61 @@ function openPreviewGallery(clickedImage) {
     renderPreviewGallery();
 }
 
+function initializeRevealOnScroll() {
+    const targets = document.querySelectorAll('section, article, .product-section');
+    if (targets.length === 0) {
+        return;
+    }
+
+    targets.forEach(target => {
+        target.classList.add('reveal-on-scroll');
+    });
+
+    if (!('IntersectionObserver' in window)) {
+        targets.forEach(target => target.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            }
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.16,
+        rootMargin: '0px 0px -10% 0px'
+    });
+
+    targets.forEach(target => observer.observe(target));
+}
+
+function initializeDynamicVisualTargets() {
+    dynamicFxState.navBar = document.querySelector('nav');
+    dynamicFxState.heroImage = document.querySelector('#top-page .group img');
+    if (dynamicFxState.heroImage) {
+        dynamicFxState.heroImage.classList.add('hero-parallax-image');
+    }
+}
+
+function updateNavigationScrollState() {
+    if (!dynamicFxState.navBar) {
+        return;
+    }
+    const shouldElevate = window.scrollY > 24;
+    dynamicFxState.navBar.classList.toggle('nav-scrolled', shouldElevate);
+}
+
+function updateHeroParallax() {
+    if (!dynamicFxState.heroImage) {
+        return;
+    }
+    const offset = Math.min(window.scrollY * 0.06, 28);
+    dynamicFxState.heroImage.style.setProperty('--parallax-offset', `${offset}px`);
+}
+
 function scrollFunction() {
     const backToTopButton = document.getElementById('backToTop');
     if (!backToTopButton) {
@@ -183,6 +243,9 @@ function scrollFunction() {
     } else {
         backToTopButton.style.display = 'none';
     }
+
+    updateNavigationScrollState();
+    updateHeroParallax();
 }
 
 function scrollToTop() {
@@ -426,6 +489,10 @@ document.getElementById('backgroundMusic')?.addEventListener('error', () => {
         updateMusicButton(true);
     }
 });
+
+initializeRevealOnScroll();
+initializeDynamicVisualTargets();
+scrollFunction();
 
 const authFeature = document.getElementById('auth-section');
 if (authFeature && !authFeature.hidden && window.firebase) {
