@@ -111,6 +111,18 @@ body {
 #musicToggle[aria-pressed="true"] {
     background-color: #1e90ff;
 }
+.theme-toggle-button {
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    display: inline-flex;
+    gap: 6px;
+    padding: 6px 10px;
+}
+.theme-toggle-button:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
 .google-translate-host {
     height: 0;
     overflow: hidden;
@@ -219,8 +231,76 @@ body {
     box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
 }
 
+body.light-theme {
+    background-color: #eef2f7 !important;
+    color: #0f172a;
+}
+
+body.light-theme nav {
+    background-color: #ffffff !important;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
+}
+
+body.light-theme .nav-scrolled {
+    background-color: rgba(255, 255, 255, 0.93) !important;
+    box-shadow: 0 12px 26px rgba(15, 23, 42, 0.12);
+}
+
+body.light-theme .product-section,
+body.light-theme .game-preview-media,
+body.light-theme .game-preview-thumbs,
+body.light-theme #mobileMenu #mobileMenuPanel,
+body.light-theme .dropdown-menu,
+body.light-theme #musicToggle,
+body.light-theme #backToTop,
+body.light-theme [class*="bg-[#1a1a1a]"],
+body.light-theme [class*="bg-[#1e1e1e]"],
+body.light-theme [class*="bg-[#0e0e0e]"] {
+    background-color: #ffffff !important;
+    color: #0f172a;
+}
+
+body.light-theme .product-section,
+body.light-theme .game-preview-media,
+body.light-theme article {
+    border-color: rgba(15, 23, 42, 0.1) !important;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+body.light-theme .text-gray-100 {
+    color: #111827 !important;
+}
+
+body.light-theme .text-gray-300 {
+    color: #334155 !important;
+}
+
+body.light-theme .text-gray-400 {
+    color: #475569 !important;
+}
+
+body.light-theme .text-gray-500 {
+    color: #64748b !important;
+}
+
+body.light-theme .border-gray-600 {
+    border-color: #cbd5e1 !important;
+}
+
+body.light-theme #mobileMenu.visible {
+    background: linear-gradient(135deg, rgba(30, 144, 255, 0.12), rgba(15, 23, 42, 0.25));
+}
+
+body.light-theme .theme-toggle-button {
+    background-color: rgba(15, 23, 42, 0.06);
+    border-color: rgba(15, 23, 42, 0.18);
+}
+
 @media (max-width: 640px) {
     #musicToggleText {
+        display: none;
+    }
+    #themeToggleText {
         display: none;
     }
     #musicToggle {
